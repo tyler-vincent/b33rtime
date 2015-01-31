@@ -1,0 +1,19 @@
+# Ignore bundler config
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+/public/system/*
+.idea/*
+.esproj
+*.espressostorage
+public/uploads/*
+.DS_Store
+/config/secrets.yml
+/config/unicorn.rb
+/config/deploy.rb
+/config/unicorn_init.sh

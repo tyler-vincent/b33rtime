@@ -7,7 +7,8 @@ This is an experimental image uploading site. Its designed to be as lightweight 
 - Users
 - Direct to S3 uploads
 - HTML5 Video
-- Search
+- Search (Needs tags probably)
+- Sorting
 - API
 - Click to animate GIFs
 - Make streaming images from S3 less shit

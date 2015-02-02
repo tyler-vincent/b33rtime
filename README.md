@@ -10,6 +10,7 @@ This is an experimental image uploading site. Its designed to be as lightweight 
 - Search
 - API
 - Click to animate GIFs
+- Make streaming images from S3 less shit
 
 ### SETUP
 

@@ -11,7 +11,7 @@ class Upload < ActiveRecord::Base
   validates :image,
             :presence => true,
             :file_size => {
-                :maximum => 15.megabytes.to_i
+                :maximum => 100.megabytes.to_i
             }
 
   validates :md5_name, :uniqueness => { :message => "This image has already been uploaded" }

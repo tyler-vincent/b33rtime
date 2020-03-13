@@ -1,33 +1,24 @@
-# B33rti.me
+# README
 
-This is an experimental image uploading site. Its designed to be as lightweight and mobile friendly as possible with no considerations for browser backwards compatibility. 
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-### TODO
-- Tags
-- Users
-- Direct to S3 uploads
-- HTML5 Video
-- Search (Needs tags probably)
-- Sorting
-- API
-- Click to animate GIFs
-- Make streaming images from S3 less shit
+Things you may want to cover:
 
-### SETUP
+* Ruby version
 
-Some `.example` files are provided in the `/config` directory for running this in a similar environment as I do as well as a sample `deploy.rb` for deploying using Capistrano. 
+* System dependencies
 
-You'll also need to copy and rename `secrets.yml.example` to `secrets.yml` and populate this with your S3 credentials.
+* Configuration
 
-```
-....................../´¯/) 
-....................,/¯../ 
-.................../..../ 
-............./´¯/'...'/´¯¯`·¸ 
-........../'/.../..../......./¨¯\ 
-........('(...´...´.... ¯~/'...') 
-.........\.................'...../ 
-..........''...\.......... _.·´ 
-............\..............( 
-..............\.............\...
-```
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...

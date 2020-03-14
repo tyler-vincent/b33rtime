@@ -1,4 +1,4 @@
-class AddMd5NameToUploads < ActiveRecord::Migration
+class AddMd5NameToUploads < ActiveRecord::Migration[4.2]
   def up
     add_column :uploads, :md5_name, :string
 

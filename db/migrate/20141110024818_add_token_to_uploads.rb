@@ -1,4 +1,4 @@
-class AddTokenToUploads < ActiveRecord::Migration
+class AddTokenToUploads < ActiveRecord::Migration[4.2]
   def change
     add_column :uploads, :token, :string
     add_index :uploads, :token

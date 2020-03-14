@@ -15,5 +15,11 @@ module B33rtime
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    case Rails.env
+      when "development"
+         config.http_domain = "localhost:3000"
+      when "production"
+         config.http_domain = "b33rti.me"
+    end
   end
 end

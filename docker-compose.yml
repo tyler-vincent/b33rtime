@@ -17,8 +17,20 @@ services:
       - .:/b33rtime
     ports:
       - "3000:3000"
+    environment:
+      - WEBPACKER_DEV_SERVER_HOST=webpacker
     depends_on:
       - db
+
+  webpacker:
+    build: .
+    env_file:
+      - '.env.docker'
+    command: ./bin/webpack-dev-server
+    volumes:
+      - .:/b33rtime
+    ports:
+      - '3035:3035'
 
 volumes:
   b33r-db:

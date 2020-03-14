@@ -8,6 +8,8 @@ services:
       MYSQL_PASSWORD: root
     expose:
       - '3306'
+    ports:
+      - '3306:3306'
     volumes:
       - b33r-db:/var/lib/mysql
   web:

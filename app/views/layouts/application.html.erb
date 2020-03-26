@@ -5,35 +5,19 @@
 
     <%= stylesheet_pack_tag 'hello_vue' %>
     <%= javascript_pack_tag 'application' %>
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
 
     <%= stylesheet_link_tag    "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tag %>
     <%= yield :head %>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   </head>
   <body>
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
     <% end %>
-
-    <div id="navbar" class="nav-stuck">
-      <div id="controls">
-        <a id="logo" href="">b33rti.me</a>
-        <div id="upload_form" class="fileUpload">
-          <%= form_for Upload.new, :html => {:id => "file_upload"} do |f| %>
-            <span>Upload</span>
-            <%= f.file_field :image, multiple: true, name: "upload[image]", :class =>"upload" %>
-          <% end %>
-        </div>
-        <div id="upload_link">
-          <%= form_for Upload.new, :html => {:multipart => true}, :remote => true do |f| %>
-              <%= f.label :remote_image_url, "URL" %>
-              <%= f.text_field :remote_image_url, :class => "pure-input-1-2" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
     <%= yield %>
   </body>
 </html>

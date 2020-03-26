@@ -19,12 +19,25 @@ import Vue from 'vue'
 import App from '../app.vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import {VueMasonryPlugin} from 'vue-masonry'
+import infiniteScroll from 'vue-infinite-scroll'
+import ImageUploader from 'vue-image-upload-resize'
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
 
 Vue.use(VueAxios, axios)
+Vue.use(VueMasonryPlugin)
+Vue.use(infiniteScroll)
+Vue.use(ImageUploader)
+Vue.use(Vuetify)
+
+const opts = {}
+export default new Vuetify(opts)
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
-    render: h => h(App)
+    render: h => h(App),
+    vuetify: new Vuetify
   }).$mount()
   document.body.appendChild(app.$el)
 

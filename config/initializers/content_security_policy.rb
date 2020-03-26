@@ -7,8 +7,10 @@
 Rails.application.config.content_security_policy do |policy|
 
   # Webpacker Vue Development Support
-  policy.connect_src :self, :https, "http://localhost:3035", "ws://localhost:3035" if Rails.env.development?
+  policy.connect_src :self, :https, :blob, "http://localhost:3035", "ws://localhost:3035" if Rails.env.development?
+
   if Rails.env.development?
+    webpacker_urls = %w(ws http).map { |protocol| "#{protocol}#{Webpacker.dev_server.https? ? 's' : ''}://#{Webpacker.dev_server.host_with_port}" }
     policy.script_src :self, :https, :unsafe_eval
   else
     policy.script_src :self, :https

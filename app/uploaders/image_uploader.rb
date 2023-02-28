@@ -21,7 +21,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def remove_animation
+    p "IMAGE TYPE"
+
     manipulate! do |img|
+      p img.mime_type
       if img.mime_type.match /gif/
         img.collapse!
       end

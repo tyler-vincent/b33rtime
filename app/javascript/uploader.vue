@@ -45,7 +45,7 @@
 
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn depressed :disabled="!objectUrl" color="primary">Upload</v-btn>
+        <v-btn depressed :disabled="!objectUrl" color="primary" @click="uploadImage">Upload</v-btn>
       </v-card-actions>
     </v-card>
 
@@ -122,7 +122,33 @@
             this.search = "";
           });
         });
-      }
+      },
+      uploadImage() {
+        let formData = new FormData()
+        let canvas = this.cropper.clear().getCroppedCanvas();
+        console.log(this);
+        console.log(canvas);
+
+        console.log(canvas.toBlob);
+
+        canvas.toBlob((blob) => {
+          formData.append("upload[image]", blob);
+
+          this.axios.post('http://localhost:3000/uploads.json', formData, {
+            headers: {
+              'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+              'Content-Type': 'application/json'
+            }
+          }).then(function (response) {
+            console.log(response)
+          }).catch(function (error) {
+            console.log(error)
+          });
+
+
+        });
+
+      },
     }
   }
 </script>

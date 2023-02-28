@@ -11,7 +11,7 @@
       <div v-infinite-scroll="getUploads" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
         <div v-masonry="containerId" transition-duration="0.3s" item-selector=".upload" gutter="0" fit-width="true" class="uploads-container" >
           <div class="upload" v-for="(item, index) in uploads" :key="index" v-masonry-tile @mouseover="$redrawVueMasonry()" @mouseleave="$redrawVueMasonry()">
-            <img :src="item.thumbnail_url" class="thumbnail" />
+            <img :src="item.full_image" class="thumbnail" />
           </div>
         </div>
       </div>

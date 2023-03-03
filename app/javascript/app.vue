@@ -1,20 +1,18 @@
 <template>
-  <div id="app">
+  <div>
+    <h1 class="text-center">Upload</h1>
 
-      <h1 class="text-center">HELLO</h1>
+    <upload-image></upload-image>
 
-      <upload-image></upload-image>
+    <h1 class="text-center">Images</h1>
 
-      <h1 class="text-center">New Vue</h1>
-
-      <div v-infinite-scroll="getUploads" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
-        <div v-masonry="containerId" transition-duration="0.3s" item-selector=".upload" gutter="0" fit-width="true" class="uploads-container" >
-          <div class="upload" v-for="(item, index) in uploads" :key="index" v-masonry-tile @mouseover="$redrawVueMasonry()" @mouseleave="$redrawVueMasonry()">
-            <img :src="item.thumbnail_url" class="thumbnail" />
-          </div>
-        </div>
+    <div v-masonry="containerId" transition-duration="0.3s" item-selector=".upload" gutter="0" fit-width="true" class="uploads-container" >
+      <div class="upload" v-for="(item, index) in uploads" :key="index" v-masonry-tile @mouseover="$redrawVueMasonry()" @mouseleave="$redrawVueMasonry()">
+        <img :src="item.thumbnail_url" class="thumbnail" />
       </div>
+    </div>
 
+    <infinite-loading target="#app" @infinite="getUploads"></infinite-loading>
 
   </div>
 </template>
@@ -25,6 +23,9 @@ import UploadImage from "./components/UploadImage";
 export default {
   created: function() {
     console.log('Component has been created!')
+  },
+  mounted: function() {
+    this.getUploads();
   },
   data: function () {
     return {
@@ -38,6 +39,7 @@ export default {
   },
   methods: {
     async getUploads () {
+      console.log(`Loading Page ${this.page}`);
       const response = await this.$http.get(`/uploads.json?page=${this.page}`);
       this.uploads = this.uploads.concat(response.data);
       this.page++;

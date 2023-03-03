@@ -15,31 +15,20 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-import Vue from 'vue'
-import App from '../app.vue'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
-import {VueMasonryPlugin} from 'vue-masonry'
-import infiniteScroll from 'vue-infinite-scroll'
-import VueTailwind from 'vue-tailwind'
-import TModal from 'vue-tailwind/dist/t-modal'
+import Vue, { createApp } from 'vue';
+import App from '../app.vue';
+import axios from 'axios';
+import VueAxios from 'vue-axios';
+import {VueMasonryPlugin} from 'vue-masonry';
+import InfiniteLoading from "v3-infinite-loading";
+import "v3-infinite-loading/lib/style.css";
 
+const app = createApp(App);
 
-Vue.use(VueAxios, axios)
-Vue.use(VueMasonryPlugin)
-Vue.use(infiniteScroll)
-
-const settings = {
-
-}
-
-Vue.use(VueTailwind, settings)
+app.use(VueAxios, axios);
+app.use(VueMasonryPlugin);
+app.component("infinite-loading", InfiniteLoading);
 
 document.addEventListener('DOMContentLoaded', () => {
-  const app = new Vue({
-    render: h => h(App)
-  }).$mount()
-  document.body.appendChild(app.$el)
-
-  console.log(app)
-})
+  app.mount('#app');
+});

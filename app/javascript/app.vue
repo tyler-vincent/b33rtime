@@ -4,14 +4,14 @@
     <v-app>
       <h1 class="text-center">HELLO</h1>
 
-      <uploader></uploader>
+      <upload-image></upload-image>
 
       <h1 class="text-center">New Vue</h1>
 
       <div v-infinite-scroll="getUploads" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
         <div v-masonry="containerId" transition-duration="0.3s" item-selector=".upload" gutter="0" fit-width="true" class="uploads-container" >
           <div class="upload" v-for="(item, index) in uploads" :key="index" v-masonry-tile @mouseover="$redrawVueMasonry()" @mouseleave="$redrawVueMasonry()">
-            <img :src="item.full_image" class="thumbnail" />
+            <img :src="item.thumbnail_url" class="thumbnail" />
           </div>
         </div>
       </div>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import uploader from './uploader.vue'
+import UploadImage from "./components/UploadImage";
 
 export default {
   created: function() {
@@ -35,7 +35,7 @@ export default {
     }
   },
   components: {
-    uploader
+    UploadImage
   },
   methods: {
     async getUploads () {

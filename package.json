@@ -4,15 +4,13 @@
   "dependencies": {
     "@rails/webpacker": "5.4.4",
     "axios": "0.19.2",
-    "cropperjs": "1.5.6",
     "vue": "^2.7.14",
     "vue-axios": "2.1.5",
-    "vue-image-upload-resize": "2.3.0",
     "vue-infinite-scroll": "2.0.2",
     "vue-loader": "^15.10.1",
     "vue-masonry": "0.11.8",
-    "vue-template-compiler": "^2.7.14",
-    "vuetify": "2.2.18"
+    "vue-tailwind": "^2.5.1",
+    "vue-template-compiler": "^2.7.14"
   },
   "devDependencies": {
     "deepmerge": "^4.2.2",

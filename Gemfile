@@ -62,8 +62,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]\
 
 gem 'webpacker'
-gem 'jquery-fileupload-rails'
-gem 'jquery-rails'
 gem 'carrierwave', '>= 2.2.3'
 gem 'mini_magick'
 gem 'will_paginate'

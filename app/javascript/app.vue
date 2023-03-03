@@ -1,7 +1,6 @@
 <template>
   <div id="app">
 
-    <v-app>
       <h1 class="text-center">HELLO</h1>
 
       <upload-image></upload-image>
@@ -15,7 +14,7 @@
           </div>
         </div>
       </div>
-    </v-app>
+
 
   </div>
 </template>

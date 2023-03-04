@@ -27,21 +27,6 @@
         Text
         </span>
     </div>
-
-
-    <div class="mx-8 shadow rounded border h-10 mt-4 flex p-1 relative items-center bg-gray-200">
-        <div class="w-full flex justify-center">
-            <button>Left</button>
-        </div>
-        <div class="w-full flex justify-center">
-            <button>Right</button>
-        </div>
-        <span
-        class="elSwitch bg-white shadow text-gray-800 flex items-center justify-center w-1/2 rounded h-8 transition-all top-[4px] absolute left-1 ">
-        Text
-        </span>
-    </div>
-
 </div>
 
 

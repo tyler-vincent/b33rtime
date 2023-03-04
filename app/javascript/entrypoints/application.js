@@ -27,6 +27,8 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 // Example: Import a stylesheet in app/frontend/index.css
 // import '~/index.css'
 
+import "virtual:windi.css";
+import 'virtual:windi-devtools';
 import { createApp } from 'vue';
 import App from '~/app.vue';
 import axios from 'axios';
@@ -34,6 +36,7 @@ import VueAxios from 'vue-axios';
 import {VueMasonryPlugin} from 'vue-masonry';
 import InfiniteLoading from "v3-infinite-loading";
 import "v3-infinite-loading/lib/style.css";
+
 
 const app = createApp(App);
 

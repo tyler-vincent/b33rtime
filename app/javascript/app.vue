@@ -18,7 +18,8 @@
 </template>
 
 <script>
-import UploadImage from "./components/UploadImage";
+import UploadImage from "~/components/UploadImage.vue";
+import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue';
 
 export default {
   created: function() {
@@ -35,7 +36,12 @@ export default {
     }
   },
   components: {
-    UploadImage
+    UploadImage,
+    TabGroup,
+    TabList,
+    Tab,
+    TabPanels,
+    TabPanel
   },
   methods: {
     async getUploads () {

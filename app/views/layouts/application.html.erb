@@ -3,14 +3,22 @@
   <head>
     <title>b33rti.me</title>
 
-    <%= stylesheet_pack_tag 'hello_vue' %>
-    <%= javascript_pack_tag 'application' %>
-
-    <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= csrf_meta_tag %>
     <%= yield :head %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= vite_client_tag %>
+    <%= vite_javascript_tag 'application' %>
+    <!--
+      If using a TypeScript entrypoint file:
+        vite_typescript_tag 'application'
+
+      If using a .jsx or .tsx entrypoint, add the extension:
+        vite_javascript_tag 'application.jsx'
+
+      Visit the guide for more information: https://vite-ruby.netlify.app/guide/rails
+    -->
+
   </head>
   <body>
     <div id="app"></div>

@@ -1,4 +1,4 @@
-version: '3'
+version: '3.9'
 services:
   db:
     image: "mysql:5.7"
@@ -14,25 +14,29 @@ services:
       - b33r-db:/var/lib/mysql
   web:
     build: .
+    depends_on:
+      - vite
+      - db
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/b33rtime
     ports:
       - "3000:3000"
     environment:
-      - WEBPACKER_DEV_SERVER_HOST=webpacker
-    depends_on:
-      - db
-
-  webpacker:
+      VITE_RUBY_HOST: vite
+      RAILS_ENV: development
+  vite:
     build: .
-    env_file:
-      - '.env.docker'
-    command: ./bin/webpack-dev-server
+    command: bundle exec vite dev
+    environment:
+        DEBUG: '*vite*'
+        RAILS_ENV: development
+        VITE_RUBY_HOST: 0.0.0.0
     volumes:
       - .:/b33rtime
     ports:
-      - '3035:3035'
-
+      - '3036:3036'
+    expose:
+      - '3036'
 volumes:
   b33r-db:

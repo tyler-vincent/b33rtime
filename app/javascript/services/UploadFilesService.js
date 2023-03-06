@@ -14,10 +14,6 @@ class UploadFilesService {
       onUploadProgress
     });
   }
-
-  getFiles() {
-    return http.get("/uploads.json");
-  }
 }
 
 export default new UploadFilesService();

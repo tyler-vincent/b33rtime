@@ -14,10 +14,3 @@
  *= require_self
  *= require_directory .
  */
-
-
-body {
-	background-color: #383838 !important;
-	margin: 0;
-	padding: 0;
-}

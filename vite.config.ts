@@ -3,7 +3,6 @@ import RubyPlugin from 'vite-plugin-ruby'
 import vue from '@vitejs/plugin-vue'
 import WindiCSS from 'vite-plugin-windicss'
 
-
 export default defineConfig({
   plugins: [
     WindiCSS({

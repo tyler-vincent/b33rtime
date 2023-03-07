@@ -28,7 +28,6 @@
       </infinite-loading>
 
     </main>
-    <footer></footer>
   </div>
 </template>
 

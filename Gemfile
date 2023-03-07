@@ -46,10 +46,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]\
 
 gem 'carrierwave', '>= 2.2.3'
-gem 'mini_magick'
-gem 'will_paginate'
-gem 'unicorn'
+gem 'mini_magick', '>= 4.12.0'
+gem 'will_paginate', '~> 3.3'
 gem 'fog-aws'
 gem 'fog-local'
-gem 'certified'
 gem 'vite_rails'

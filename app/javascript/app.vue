@@ -6,14 +6,14 @@
     </header>
     <main id="uploadlist" class="relative pt-4">
 
-      <div v-masonry="containerId" transition-duration="0.2s" item-selector=".upload" gutter="0" fit-width="true" class="uploads-container" >
+      <div v-masonry="containerId" transition-duration="0s" item-selector=".upload" gutter="0" fit-width="true" class="uploads-container" >
         <div class="upload" v-for="(item, index) in uploads" :key="index" v-masonry-tile @mouseover="$redrawVueMasonry()" @mouseleave="$redrawVueMasonry()">
-          <upload-card :thumbnail-url="item.thumbnail_url" :full-url="item.full_url"></upload-card>
+          <upload-card :in-viewport-root-margin="'300px 0px 300px 0px'" :thumbnail-url="item.thumbnail_url" :full-url="item.full_url"></upload-card>
         </div>
 
       </div>
 
-      <infinite-loading target="uploadlist" :distance="100" :firstload="false" @infinite="getUploads(1)">
+      <infinite-loading target="uploadlist" :distance="400" :firstload="false" @infinite="getUploads(1)">
         <template #spinner>
           <div class="text-center my-8">
               <div role="status">

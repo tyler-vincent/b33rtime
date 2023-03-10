@@ -1,7 +1,7 @@
 class UploadsController < ApplicationController
 
   def index
-    @uploads = Upload.order("created_at desc").paginate(:per_page => 20, :page => params[:page])
+    @uploads = Upload.order("created_at desc").paginate(:per_page => 30, :page => params[:page])
   end
 
   def stream_image

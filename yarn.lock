@@ -740,6 +740,11 @@ vue-demi@^0.13.2:
   resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.13.11.tgz#7d90369bdae8974d87b1973564ad390182410d99"
   integrity sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==
 
+vue-in-viewport-mixin@3.1.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/vue-in-viewport-mixin/-/vue-in-viewport-mixin-3.0.0.tgz#3716b2f4da2be4931861d04067b0c438f7c9dbc0"
+  integrity sha512-fTC6T1byIZsPxN4DZyfO7P++TBQ3nJ4Is+KKVE8ynjmpdrmaJiz2KRSHoIH4Kl0MlnVZvYlZZ+YlaPwgeiDmHg==
+
 vue-masonry@0.16.0:
   version "0.16.0"
   resolved "https://registry.yarnpkg.com/vue-masonry/-/vue-masonry-0.16.0.tgz#e374fa34024cee664f6983bf672f417aa8cad2d1"

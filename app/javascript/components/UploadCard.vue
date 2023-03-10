@@ -4,11 +4,11 @@
 
     <div  class="flip m-1 w-64 h-64 rounded-2xl cursor-pointer">
       <div className="flip-content">
-        <div className="inset-0 w-full h-full justify-center items-center bg-gray-900 overflow-hidden flip-front">
+        <div v-if="visible" className="inset-0 w-full h-full justify-center items-center bg-gray-900 overflow-hidden flip-front">
           <img :src="thumbnailUrl" class="thumbnail z-20" />
           <div class="animate-pulse bg-gray-700 z-10 h-64 w-64"></div>
         </div>
-        <div className="w-full h-full text-white bg-black flip-back">
+        <div v-if="visible" className="w-full h-full text-white bg-black flip-back">
           <div class="container mx-auto p-6 h-full">
             <input :value="fullUrl" ref="clone" readonly v-on:focus="$event.target.select()" type="text" class="mt-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
@@ -34,14 +34,23 @@
 </template>
 
 <script>
+  import inViewport from 'vue-in-viewport-mixin';
+
   export default {
     name: "upload-card",
     props: {
       thumbnailUrl: String,
       fullUrl: String
     },
+    mixins: [ inViewport ],
+    watch: {
+      'inViewport.now': function(isVisible) {
+        this.visible = isVisible;
+      }
+    },
     data() {
       return {
+        visible: true
       };
     },
     methods: {

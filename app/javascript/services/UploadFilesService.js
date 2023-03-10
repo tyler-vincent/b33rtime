@@ -6,7 +6,7 @@ class UploadFilesService {
 
     formData.append("upload[image]", file);
 
-    return http.post("/uploads.json", formData, {
+    return http.post("uploads.json", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
         'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')

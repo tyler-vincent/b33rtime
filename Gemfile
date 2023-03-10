@@ -52,3 +52,5 @@ gem 'fog-aws'
 gem 'fog-local'
 gem 'vite_rails'
 gem 'unicorn'
+
+gem "dockerfile-rails", ">= 1.2", :group => :development

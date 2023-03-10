@@ -13,27 +13,31 @@ services:
     volumes:
       - b33r-postgres-db:/var/lib/postgresql/data
   web:
-    build: .
+    build:
+      dockerfile: Dockerfile.dev
+      context: .
     depends_on:
       - vite
       - postgres
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
-      - .:/b33rtime
+      - .:/rails
     ports:
       - "3000:3000"
     environment:
       VITE_RUBY_HOST: vite
       RAILS_ENV: development
   vite:
-    build: .
+    build:
+      dockerfile: Dockerfile.dev
+      context: .
     command: bundle exec vite dev
     environment:
         DEBUG: '*vite*'
         RAILS_ENV: development
         VITE_RUBY_HOST: 0.0.0.0
     volumes:
-      - .:/b33rtime
+      - .:/rails
     ports:
       - '3036:3036'
     expose:

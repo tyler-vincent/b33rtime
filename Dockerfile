@@ -4,6 +4,8 @@
 ARG RUBY_VERSION=3.2.1
 FROM ruby:$RUBY_VERSION-slim as base
 
+ENV RUBY_YJIT_ENABLE=1
+
 RUN mkdir /rails
 # Rails app lives here
 WORKDIR /rails

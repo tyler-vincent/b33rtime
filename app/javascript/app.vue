@@ -55,20 +55,13 @@ export default {
   },
   methods: {
     async getUploads (numPages=1) {
-      console.log(`Loading Page ${this.page}`);
-
       for (let i = 0; i < numPages; i++) {
         const response = await this.$http.get(`/uploads.json?page=${this.page}`);
         this.uploads = this.uploads.concat(response.data);
         this.page++;
       }
     },
-    setImage: function (resizedFile) {
-      console.log(this.$refs.fileUpload.$el.children[1].files[0])
-      console.log(resizedFile)
-    },
     processNewUpload: function (payload) {
-      console.log(payload);
       this.uploads.unshift(payload);
     }
   }

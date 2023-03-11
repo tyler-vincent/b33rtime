@@ -4,7 +4,14 @@
 ARG RUBY_VERSION=3.2.1
 FROM ruby:$RUBY_VERSION-slim as base
 
+# Enable YJIT
 ENV RUBY_YJIT_ENABLE=1
+
+# Install Jemalloc
+RUN apt-get update -qq && \
+    apt-get -y install libjemalloc2
+ENV LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2
+ENV MALLOC_CONF=dirty_decay_ms:1000,narenas:2,background_thread:true
 
 RUN mkdir /rails
 # Rails app lives here

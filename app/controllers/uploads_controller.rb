@@ -2,7 +2,7 @@ class UploadsController < ApplicationController
   include CacheCrispies::Controller
 
   def index
-    @uploads = Upload.order("created_at desc").paginate(:per_page => 100, :page => params[:page])
+    @uploads = Upload.order("created_at desc").paginate(:per_page => 50, :page => params[:page])
     cache_render UploadSerializer, @uploads
   end
 

@@ -40,7 +40,7 @@ export default {
   },
   mounted: function() {
     // On first load fetch twice to fill the screen
-    this.getUploads(2);
+    this.getUploads;
   },
   data: function () {
     return {
@@ -54,12 +54,10 @@ export default {
     UploadCard
   },
   methods: {
-    async getUploads (numPages=1) {
-      for (let i = 0; i < numPages; i++) {
-        const response = await this.$http.get(`/uploads.json?page=${this.page}`);
-        this.uploads = this.uploads.concat(response.data.uploads);
-        this.page++;
-      }
+    async getUploads {
+      const response = await this.$http.get(`/uploads.json?page=${this.page}`);
+      this.uploads = this.uploads.concat(response.data.uploads);
+      this.page++;
     },
     processNewUpload: function (payload) {
       this.uploads.unshift(payload.upload);

@@ -13,7 +13,7 @@
 
       </div>
 
-      <infinite-loading target="uploadlist" :distance="400" :firstload="false" @infinite="getUploads(1)">
+      <infinite-loading target="uploadlist" :distance="600" :firstload="false" @infinite="getUploads">
         <template #spinner>
           <div class="text-center my-8">
               <div role="status">

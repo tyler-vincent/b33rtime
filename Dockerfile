@@ -52,7 +52,8 @@ COPY --link . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
-RUN SECRET_KEY_BASE=DummyValueToPassAssetsCompilation bundle exec rails assets:precompile
+# Precompile JS/CSS assets
+RUN SECRET_KEY_BASE=Dummy bundle exec rails assets:precompile
 
 # Final stage for app image
 FROM base

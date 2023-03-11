@@ -11,13 +11,8 @@ class UploadsController < ApplicationController
       @upload = Upload.find_by_token(params[:token])
     end
 
-    URI.open(@upload.image_url(:full)) {|img|
-      tmpfile = Tempfile.new("download")
-      File.open(tmpfile.path, 'wb') do |f|
-        f.write img.read
-      end
-      send_file tmpfile.path, :filename => @upload[:image], :disposition => 'inline'
-    }
+    file_data = URI.open(@upload.image_url(:full))
+    send_data file_data.read, :filename => @upload[:image], :disposition => 'inline'
   end
 
   def create

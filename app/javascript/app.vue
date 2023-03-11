@@ -40,7 +40,7 @@ export default {
   },
   mounted: function() {
     // On first load fetch twice to fill the screen
-    this.getUploads;
+    this.getUploads();
   },
   data: function () {
     return {
@@ -54,7 +54,7 @@ export default {
     UploadCard
   },
   methods: {
-    async getUploads {
+    async getUploads () {
       const response = await this.$http.get(`/uploads.json?page=${this.page}`);
       this.uploads = this.uploads.concat(response.data.uploads);
       this.page++;

@@ -52,5 +52,6 @@ gem 'fog-aws'
 gem 'fog-local'
 gem 'vite_rails'
 gem 'unicorn'
+gem 'cache_crispies', '~> 1.4'
 
 gem "dockerfile-rails", ">= 1.2", :group => :development

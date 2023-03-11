@@ -1,7 +1,9 @@
 class UploadsController < ApplicationController
+  include CacheCrispies::Controller
 
   def index
     @uploads = Upload.order("created_at desc").paginate(:per_page => 30, :page => params[:page])
+    cache_render UploadSerializer, @uploads
   end
 
   def stream_image
@@ -17,6 +19,7 @@ class UploadsController < ApplicationController
 
   def create
     @upload = Upload.create(upload_params)
+    cache_render UploadSerializer, @upload
   end
 
  private

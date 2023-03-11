@@ -57,12 +57,12 @@ export default {
     async getUploads (numPages=1) {
       for (let i = 0; i < numPages; i++) {
         const response = await this.$http.get(`/uploads.json?page=${this.page}`);
-        this.uploads = this.uploads.concat(response.data);
+        this.uploads = this.uploads.concat(response.data.uploads);
         this.page++;
       }
     },
     processNewUpload: function (payload) {
-      this.uploads.unshift(payload);
+      this.uploads.unshift(payload.upload);
     }
   }
 }

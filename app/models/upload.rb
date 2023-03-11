@@ -39,6 +39,14 @@ class Upload < ActiveRecord::Base
     return "http://m.#{Rails.application.config.http_domain}/#{token}.#{image.file.try(:extension).try(:downcase)}"
   end
 
+  def thumbnail_url
+    return self.image_url(:thumb)
+  end
+
+  def full_image
+    return self.image_url(:full)
+  end
+
   protected
 
   def generate_token

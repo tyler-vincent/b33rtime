@@ -123,7 +123,7 @@
         message: "",
         uploadModalOpen: false,
         uploadInProgress: false,
-        uploadProcessing: true
+        uploadProcessing: true,
       };
     },
     components: {
@@ -136,7 +136,6 @@
     methods: {
       selectImage() {
         this.currentImage = this.$refs.file.files.item(0);
-        this.previewImage = URL.createObjectURL(this.currentImage);
         this.progress = 0;
         this.message = "";
       },
@@ -165,7 +164,6 @@
       },
       resetUploader() {
         this.currentImage = undefined;
-        this.previewImage = undefined;
         this.progress = 0;
         this.uploadProcessing = false;
         this.message = "";

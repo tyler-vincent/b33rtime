@@ -35,7 +35,7 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';
 import {VueMasonryPlugin} from 'vue-masonry';
 import InfiniteLoading from "v3-infinite-loading";
-import inViewport from 'vue-in-viewport-mixin';
+
 
 const app = createApp(App);
 

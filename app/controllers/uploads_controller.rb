@@ -13,8 +13,9 @@ class UploadsController < ApplicationController
       @upload = Upload.find_by_token(params[:token])
     end
 
-    file_data = URI.open(@upload.image_url(:full))
-    send_data file_data.read, :filename => @upload[:image], :disposition => 'inline'
+    #file_data = URI.open(@upload.image_url(:full))
+    #send_data file_data.read, :filename => @upload[:image], :disposition => 'inline'
+    redirect_to @upload.image_url(:full, query: {"response-content-disposition" => "inline;"}), allow_other_host: true
   end
 
   def create

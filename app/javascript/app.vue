@@ -1,9 +1,11 @@
 <template>
   <div>
+
     <header class="sticky top-0 flex w-full items-center justify-between py-4 bg-slate-900 z-50">
       <h1 class="font-thin text-2xl m-0 text-slate-300 ml-12">b33rti.me</h1>
       <upload-image @new-upload-added="processNewUpload"></upload-image>
     </header>
+
     <main id="uploadlist" class="relative pt-4">
 
       <div v-masonry="containerId" transition-duration="0s" item-selector=".upload" gutter="0" fit-width="true" class="uploads-container" >
@@ -13,7 +15,7 @@
 
       </div>
 
-      <infinite-loading target="uploadlist" :distance="600" :firstload="false" @infinite="getUploads">
+      <infinite-loading target="uploadlist" :distance="600" @infinite="getUploads">
         <template #spinner>
           <div class="text-center my-8">
               <div role="status">
@@ -36,12 +38,6 @@ import UploadImage from "~/components/UploadImage.vue";
 import UploadCard from "~/components/UploadCard.vue";
 
 export default {
-  created: function() {
-  },
-  mounted: function() {
-    // On first load fetch twice to fill the screen
-    this.getUploads();
-  },
   data: function () {
     return {
       page: 1,

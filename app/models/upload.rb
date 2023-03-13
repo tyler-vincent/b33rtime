@@ -6,27 +6,17 @@ class Upload < ActiveRecord::Base
 
   before_create :default_name
   before_create :generate_token
-  before_validation :generate_md5
 
   validates :image,
             :presence => true,
             :file_size => {
-              :maximum => 20.megabytes.to_i
+              :maximum => 32.megabytes.to_i
             }
 
-  validates :md5_name, :uniqueness => { :message => "This image has already been uploaded" }
   validates :token, :uniqueness => true
 
   def default_name
     self.name ||= File.basename(image.filename, '.*').titleize if image
-  end
-
-  def generate_md5
-    self.md5_name = to_md5 if image
-  end
-
-  def to_md5
-    Digest::MD5.hexdigest(image.read)
   end
 
   def self.recreate_versions

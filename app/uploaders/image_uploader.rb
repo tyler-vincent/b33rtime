@@ -2,10 +2,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   storage :fog
 
-  def fog_public
-    true
-  end
-
   def store_dir
     "#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end

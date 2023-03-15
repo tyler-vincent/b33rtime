@@ -34,32 +34,32 @@
 </template>
 
 <script>
-import UploadImage from "~/components/UploadImage.vue";
-import UploadCard from "~/components/UploadCard.vue";
+  import UploadImage from "~/components/UploadImage.vue";
+  import UploadCard from "~/components/UploadCard.vue";
 
-export default {
-  data: function () {
-    return {
-      page: 1,
-      uploads: [],
-      containerId: null
-    }
-  },
-  components: {
-    UploadImage,
-    UploadCard
-  },
-  methods: {
-    async getUploads () {
-      const response = await this.$http.get(`/uploads.json?page=${this.page}`);
-      this.uploads = this.uploads.concat(response.data.uploads);
-      this.page++;
+  export default {
+    data () {
+      return {
+        page: 1,
+        uploads: [],
+        containerId: null
+      }
     },
-    processNewUpload: function (payload) {
-      this.uploads.unshift(payload.upload);
+    components: {
+      UploadImage,
+      UploadCard
+    },
+    methods: {
+      async getUploads () {
+        const response = await this.$http.get(`/uploads.json?page=${this.page}`);
+        this.uploads = this.uploads.concat(response.data.uploads);
+        this.page++;
+      },
+      processNewUpload (payload) {
+        this.uploads.unshift(payload.upload);
+      }
     }
   }
-}
 </script>
 
 <style lang="scss" scoped>

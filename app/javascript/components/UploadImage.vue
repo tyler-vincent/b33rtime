@@ -31,9 +31,7 @@
         </TransitionChild>
 
         <div class="fixed inset-0 overflow-y-auto">
-          <div
-            class="flex min-h-full items-center justify-center p-4 text-center"
-          >
+          <div class="flex min-h-full items-center justify-center p-4 text-center">
             <TransitionChild
               as="template"
               enter="duration-300 ease-out"
@@ -43,20 +41,14 @@
               leave-from="opacity-100 scale-100"
               leave-to="opacity-0 scale-95"
             >
-              <DialogPanel
-                class="w-full max-w-md transform overflow-hidden rounded bg-slate-200 p-6 text-left align-middle shadow-xl transition-all"
-              >
-                <DialogTitle
-                  as="h3"
-                  class="text-lg font-medium leading-6 text-slate-700"
-                >
+              <DialogPanel class="w-full max-w-md transform overflow-hidden rounded bg-slate-200 p-6 text-left align-middle shadow-xl transition-all">
+                <DialogTitle as="h3" class="text-lg font-medium leading-6 text-slate-700">
                   Upload Image
                 </DialogTitle>
 
 
                 <div v-if="!previewImage" class="max-w-xl">
-                  <label
-                      class="flex justify-center w-full h-32 px-4 mt-4 mb-4 transition border-2 bg-slate-200 border-slate-400 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-600 focus:outline-none">
+                  <label class="flex justify-center w-full h-32 px-4 mt-4 mb-4 transition border-2 bg-slate-200 border-slate-400 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-600 focus:outline-none">
                       <span class="flex items-center space-x-2">
                           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-slate-500" fill="none" viewBox="0 0 24 24"
                               stroke="currentColor" stroke-width="2">
@@ -84,13 +76,15 @@
                     <button @click="upload" class="py-3 px-6 absolute bottom-0 m-auto left-0 right-0 bg-blue-500 text-white p-2 rounded hover:bg-blue-800 mb-8">Upload</button>
                   </div>
                 </div>
-
-                <div v-if="uploadInProgress" class="progress mt-2">
-                  <div class="w-full bg-gray-200 h-1.5 mb-4 dark:bg-gray-700">
-                    <div class="bg-blue-600 h-1.5 dark:bg-blue-500" :class="{ 'animate-pulse': uploadProcessing }" :style="{ width: progress + '%' }"></div>
+                <transition
+                  enter-from-class="opacity-0"
+                  enter-active-class="transition duration-300">
+                  <div v-if="uploadInProgress" class="progress mt-2">
+                    <div class="w-full bg-gray-200 h-1.5 mb-4 dark:bg-gray-700">
+                      <div class="bg-blue-600 h-1.5 dark:bg-blue-500" :class="{ 'animate-pulse': uploadProcessing }" :style="{ width: progress + '%' }"></div>
+                    </div>
                   </div>
-                </div>
-
+                </transition>
               </DialogPanel>
             </TransitionChild>
           </div>
@@ -141,27 +135,23 @@
         this.message = "";
       },
       upload() {
-        this.progress = 100;
         UploadService.upload(this.currentImage, (event) => {
           this.uploadInProgress = true;
           this.progress = Math.round((100 * event.loaded) / event.total);
-
-          if (this.progress == 100) {
-            this.uploadProcessing = true;
-          }
+          this.uploadProcessing = this.progress == 100 ? true : false;
         })
-          .then((response) => {
-            this.message = response.data.message;
-            this.$emit("new-upload-added", response.data);
-            this.uploadInProgress = false;
-            this.resetUploader();
-            this.closeModal();
-          })
-          .catch((err) => {
-            this.progress = 0;
-            this.message = "Could not upload the image! " + err;
-            this.currentImage = undefined;
-          });
+        .then((response) => {
+          this.message = response.data.message;
+          this.$emit("new-upload-added", response.data);
+          this.uploadInProgress = false;
+          this.resetUploader();
+          this.closeModal();
+        })
+        .catch((err) => {
+          this.progress = 0;
+          this.message = "Could not upload the image! " + err;
+          this.currentImage = undefined;
+        });
       },
       resetUploader() {
         this.currentImage = undefined;
@@ -176,9 +166,7 @@
       openModal: function () {
         this.uploadModalOpen = true
       }
-    },
-    mounted() {
-    },
+    }
   };
 </script>
 

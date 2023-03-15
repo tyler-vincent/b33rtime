@@ -38,6 +38,11 @@
 
   export default {
     name: "upload-card",
+    data() {
+      return {
+        visible: true
+      };
+    },
     props: {
       thumbnailUrl: String,
       fullUrl: String
@@ -47,11 +52,6 @@
       'inViewport.now': function(isVisible) {
         this.visible = isVisible;
       }
-    },
-    data() {
-      return {
-        visible: true
-      };
     },
     methods: {
       copy() {
@@ -66,7 +66,6 @@
 </script>
 
 <style scoped>
-
   .thumbnail {
     width: 100%;
     height: 100%;
@@ -96,5 +95,4 @@
   .flip-back {
     transform: rotateY(180deg);
   }
-
 </style>

@@ -123,7 +123,7 @@
         message: "",
         uploadModalOpen: false,
         uploadInProgress: false,
-        uploadProcessing: true,
+        uploadProcessing: false,
       };
     },
     components: {

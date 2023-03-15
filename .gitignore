@@ -18,3 +18,36 @@ public/uploads/*
 /config/deploy.rb
 /config/unicorn_init.sh
 config/skylight.yml
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore uploaded files in development
+/storage/*
+!/storage/.keep
+
+/node_modules
+/yarn-error.log
+
+/public/assets
+.byebug_history
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+.yarn
+
+# Vite Ruby
+/public/vite*
+node_modules
+# Vite uses dotenv and suggests to ignore local-only env files. See
+# https://vitejs.dev/guide/env-and-mode.html#env-files
+*.local
+

@@ -1,35 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html class="dark bg-slate-800">
   <head>
     <title>b33rti.me</title>
-    <%= stylesheet_link_tag    "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
+
     <%= csrf_meta_tag %>
     <%= yield :head %>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= vite_client_tag %>
+    <%= vite_javascript_tag 'application' %>
+    <!--
+      If using a TypeScript entrypoint file:
+        vite_typescript_tag 'application'
+
+      If using a .jsx or .tsx entrypoint, add the extension:
+        vite_javascript_tag 'application.jsx'
+
+      Visit the guide for more information: https://vite-ruby.netlify.app/guide/rails
+    -->
+
   </head>
   <body>
+    <div id="app"></div>
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
     <% end %>
-
-    <div id="navbar" class="nav-stuck">
-      <div id="controls">
-        <a id="logo" href="">b33rti.me</a>
-        <div id="upload_form" class="fileUpload">
-          <%= form_for Upload.new, :html => {:id => "file_upload"} do |f| %>
-            <span>Upload</span>
-            <%= f.file_field :image, multiple: true, name: "upload[image]", :class =>"upload" %>
-          <% end %>
-        </div>
-        <div id="upload_link">
-          <%= form_for Upload.new, :html => {:multipart => true}, :remote => true do |f| %>
-              <%= f.label :remote_image_url, "URL" %>
-              <%= f.text_field :remote_image_url, :class => "pure-input-1-2" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
     <%= yield %>
   </body>
 </html>

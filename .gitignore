@@ -42,6 +42,7 @@ config/skylight.yml
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+.yarn
 
 # Vite Ruby
 /public/vite*
